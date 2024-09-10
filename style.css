@@ -1,0 +1,140 @@
+/* Reset margin and padding for all elements, and set box-sizing to border-box */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Set the grid layout for the HTML and body, centering content and setting background */
+html, body {
+  display: grid;
+  height: 100%;
+  place-items: center;
+  background: #efefef;
+}
+
+/* Wrapper for the image container with specific dimensions and styling */
+.wrapper {
+  position: relative;
+  height: 500px;
+  width: 750px;
+  overflow: hidden;
+  background: #fff;
+  border: 7px solid #fff;
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.15);
+}
+
+/* Container for holding images side by side */
+.wrapper .images {
+  height: 100%;
+  width: 100%;
+  display: flex;
+}
+
+/* Styling for the first image, covering the entire wrapper */
+.wrapper .images .img-1 {
+  height: 100%;
+  width: 100%;
+  background: url("images/pet5.jpg") no-repeat;
+  background-size: cover; /* Ensure the image covers the entire area */
+}
+
+/* Styling for the second image, positioned on the left half with grayscale filter */
+.wrapper .images .img-2 {
+  position: absolute;
+  height: 100%;
+  width: 50%;
+  filter: grayscale(80%);
+  background: url("images/pet5.jpg") no-repeat;
+  background-size: cover; /* Ensure the image covers the entire area */
+}
+
+/* Slider container positioned at the top, full width, with high z-index */
+.wrapper .slider {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 99;
+}
+
+/* Slider input styling, removing outline and appearance for custom styling */
+.wrapper .slider input {
+  width: 100%;
+  outline: none;
+  background: none;
+  -webkit-appearance: none; /* Remove default slider appearance in WebKit browsers */
+}
+
+/* Custom styling for the slider thumb (draggable element) */
+.slider input::-webkit-slider-thumb {
+  height: 486px;
+  width: 3px;
+  background: none;
+  -webkit-appearance: none; /* Remove default thumb appearance */
+  cursor: col-resize; /* Cursor indicating column resizing */
+}
+
+/* Line indicating draggable boundary within the slider */
+.slider .drag-line {
+  width: 3px;
+  height: 486px;
+  position: absolute;
+  left: 49.85%; /* Center the drag line */
+  pointer-events: none; /* Prevent mouse events from affecting this element */
+}
+
+/* Top and bottom background sections of the drag line */
+.slider .drag-line::before,
+.slider .drag-line::after {
+  position: absolute;
+  content: "";
+  width: 100%;
+  height: 222px;
+  background: #000000;
+}
+
+/* Position the top background section */
+.slider .drag-line::before {
+  top: 0;
+}
+
+/* Position the bottom background section */
+.slider .drag-line::after {
+  bottom: 0;
+}
+
+/* Centered circular drag handle */
+.slider .drag-line span {
+  height: 42px;
+  width: 42px;
+  border: 3px solid #000000;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* Arrow styling within the drag handle */
+.slider .drag-line span::before,
+.slider .drag-line span::after {
+  position: absolute;
+  content: "";
+  top: 50%;
+  border: 10px solid transparent; /* Arrow base is transparent */
+  border-bottom-width: 0px;
+  border-right-width: 0px;
+  transform: translate(-50%, -50%) rotate(45deg); /* Rotate to form the arrow */
+}
+
+/* Left side arrow of the drag handle */
+.slider .drag-line span::before {
+  left: 40%;
+  border-left-color: #000000; /* White arrow on the left */
+}
+
+/* Right side arrow of the drag handle */
+.slider .drag-line span::after {
+  left: 60%;
+  border-top-color: #000000; /* White arrow on the right */
+}
